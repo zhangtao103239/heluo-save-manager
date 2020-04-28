@@ -286,12 +286,9 @@
             teammates() {
                 let teammate = []
                 this.saveJson.Teammates.forEach(value => {
-                    if ( value!=='Player' &&/.*?[a-zA-Z]$/.test(value)) {
-                        value = value.slice(0, -1)
-                    }
                     let npc = this.saveJson.Character[value]
-                    if (!npc && /.*?[a-zA-Z]$/.test(value)) {
-                        value = value.slice(0, -1)
+                    if (!npc && value.length > 6) {
+                        value = value.slice(0, 6)
                         npc = this.saveJson.Character[value]
                     }
                     if (npc) {
