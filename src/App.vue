@@ -289,10 +289,15 @@
                     if ( value!=='Player' &&/.*?[a-zA-Z]$/.test(value)) {
                         value = value.slice(0, -1)
                     }
-                    let npc = this.saveJson.Character[value];
+                    let npc = this.saveJson.Character[value]
+                    if (!npc && /.*?[a-zA-Z]$/.test(value)) {
+                        value = value.slice(0, -1)
+                        npc = this.saveJson.Character[value]
+                    }
                     if (npc) {
                         teammate.push(npc)
-                    } else {
+                    }
+                    else {
                         this.$message.error('未识别的NPC:' + value)
                     }
                 })
