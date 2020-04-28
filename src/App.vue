@@ -104,6 +104,11 @@
 
 <script>
     import {saveAs} from 'file-saver'
+    import equipment from "./data/equipment";
+    import skillItem from './data/skill-item'
+    import translator from "./data/translator";
+    import inventoryItem from './data/inventory-item'
+    import npcItem from './data/npc-item'
 
     function readText2Object(text) {
         let result = []
@@ -125,25 +130,26 @@
         components: {},
         data() {
             return {
-                itemCategories: [{id: "inventoryItem", name: "一般物品"}, {id: "equipment", name: "装备"}, {
-                    id: "skillItem",
-                    name: "技能书"
-                }],
+                itemCategories: [
+                    {id: "inventoryItem", name: "一般物品"},
+                    {id: "equipment", name: "装备"},
+                    {id: "skillItem", name: "技能书"}
+                    ],
                 filePlace: '',
                 fileName: '',
                 fileTexts: [],
                 waiting: false,
                 itemChooseShow: false,
                 saveJson: {},
-                inventoryItem: [],
-                equipment: [],
-                skillItem: [],
-                npc: [],
+                inventoryItem: readText2Object(inventoryItem),
+                equipment: readText2Object(equipment),
+                skillItem: readText2Object(skillItem),
+                npc: readText2Object(npcItem),
                 saveShow: [],
                 itemCategoryShow: 'inventoryItem',
                 itemFilterKey: '',
                 itemPage: 1,
-                translator: {}
+                translator: translator
             }
         },
         computed: {
@@ -230,24 +236,24 @@
                     value.Stolen = false
                 })
             }
-        },
-        mounted() {
-            this.$http.get('inventoryitem.txt').then(result => {
-                this.inventoryItem = readText2Object(result.data)
-            })
-            this.$http.get('npcitem.txt').then(result => {
-                this.npc = readText2Object(result.data)
-            })
-            this.$http.get('equipment.txt').then(result => {
-                this.equipment = readText2Object(result.data)
-            })
-            this.$http.get('skillitem.txt').then(result => {
-                this.skillItem = readText2Object(result.data)
-            })
-            this.$http.get('translator.json').then(result => {
-                this.translator = result.data
-            })
         }
+        // mounted() {
+        //     this.$http.get('inventoryitem.txt').then(result => {
+        //         this.inventoryItem = readText2Object(result.data)
+        //     })
+        //     this.$http.get('npcitem.txt').then(result => {
+        //         this.npc = readText2Object(result.data)
+        //     })
+        //     this.$http.get('equipment.txt').then(result => {
+        //         this.equipment = readText2Object(result.data)
+        //     })
+        //     this.$http.get('skillitem.txt').then(result => {
+        //         this.skillItem = readText2Object(result.data)
+        //     })
+        //     this.$http.get('translator.json').then(result => {
+        //         this.translator = result.data
+        //     })
+        // }
     }
 </script>
 
