@@ -286,9 +286,14 @@
             teammates() {
                 let teammate = []
                 this.saveJson.Teammates.forEach(value => {
+                    if ( value!=='Player' &&/.*?[a-zA-Z]$/.test(value)) {
+                        value = value.slice(0, -1)
+                    }
                     let npc = this.saveJson.Character[value];
                     if (npc) {
                         teammate.push(npc)
+                    } else {
+                        this.$message.error('未识别的NPC:' + value)
                     }
                 })
                 return teammate
