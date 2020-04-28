@@ -32,12 +32,12 @@ export default {
     "Injured": "内伤",
     "Wounded": "外伤",
     "Poisoned": "中毒",
-    "Sealed": "封锁",
-    "Confused": "困惑",
-    "Dazed": "眩晕",
-    "Cramped": "断筋",
-    "Sprained": "扭伤",
-    "Exhausted": "筋疲力尽",
-    "Frozen": "冻伤",
-    "Drunk": "喝醉"
+    "Sealed": "封穴",
+    "Confused": "迷惑",
+    "Dazed": "晕眩",
+    "Cramped": "分筋",
+    "Sprained": "错骨",
+    "Exhausted": "散功",
+    "Frozen": "冰封",
+    "Drunk": "醉意"
 }
