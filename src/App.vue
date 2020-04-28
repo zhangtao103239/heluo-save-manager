@@ -286,7 +286,10 @@
             teammates() {
                 let teammate = []
                 this.saveJson.Teammates.forEach(value => {
-                    teammate.push(this.saveJson.Character[value])
+                    let npc = this.saveJson.Character[value];
+                    if (npc) {
+                        teammate.push(npc)
+                    }
                 })
                 return teammate
             },
