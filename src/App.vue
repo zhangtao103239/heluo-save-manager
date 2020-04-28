@@ -47,22 +47,20 @@
                             <el-table stripe border :data="teammates">
                                 <el-table-column
                                         prop="Id"
-                                        label="NpcId"
-                                        width="80px">
+                                        label="NpcId">
                                 </el-table-column>
                                 <el-table-column
-                                        label="姓名"
-                                        width="180">
+                                        label="姓名">
                                     <template slot-scope="scope">
                                         <span>{{npc[scope.row.Id]}}</span>
                                     </template>
                                 </el-table-column>
-                                <el-table-column label="等级" width="250">
+                                <el-table-column label="等级">
                                     <template slot-scope="scope">
                                         <el-input-number v-model="scope.row.Level"></el-input-number>
                                     </template>
                                 </el-table-column>
-                                <el-table-column label="感悟点" width="250">
+                                <el-table-column label="感悟点">
                                     <template slot-scope="scope">
                                         <el-input-number v-model="scope.row.TalentData.NewPoint"></el-input-number>
                                     </template>
@@ -120,7 +118,7 @@
                 </el-form>
             </div>
         </el-card>
-        <el-dialog :title="npc[characterData.Id]+'基础数据修改'" :visible.sync="modifyDataShow" width="90%">
+        <el-dialog :title="npc[characterData.Id]+'基础数据修改'" :visible.sync="modifyDataShow" width="70rem">
             <el-form>
                 <el-row :gutter="10">
                     <el-col :span="4" v-for="(value, name) in characterData.Data"
@@ -368,6 +366,8 @@
                         itemData.Hurt[hurt[0]] = parseInt(hurt[1])
                     })
                     itemData.HurtDifference = item.orial[15]
+                } else if (this.itemCategoryShow === 'skillItem') {
+                    itemData.Level = item.orial[8]
                 }
                 // itemData.Durability = item.orial[]
                 // console.log(itemData)
