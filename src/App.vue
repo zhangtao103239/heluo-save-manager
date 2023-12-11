@@ -286,10 +286,17 @@
             teammates() {
                 let teammate = []
                 this.saveJson.Teammates.forEach(value => {
+                    let teammateName = this.npc[value]
                     let npc = this.saveJson.Character[value]
-                    if (!npc && value.length > 6) {
-                        value = value.slice(0, 6)
-                        npc = this.saveJson.Character[value]
+                    if (!npc) {
+                        // 直接找不到npc，找同名的情况
+                        let sameNameNpcs = this.npcItem().filter(npc => npc.name === teammateName)
+                        for (let i = 0; i < sameNameNpcs.length; i++) {
+                            npc = this.saveJson.Character[sameNameNpcs[i].id]
+                            if (npc) {
+                                break
+                            }
+                        }
                     }
                     if (npc) {
                         teammate.push(npc)
